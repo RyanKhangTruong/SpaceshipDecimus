@@ -1,0 +1,37 @@
+Spaceship Decimus is broken and it's up to you to collect the missing pieces, put it together, and fly back to your planet! To exit each maze level, use the arrow keys to move around collect all the available pieces. After five maze levels, use the arrow keys to fly your ship and use the spacebar to shoot! Watch out for aliens and asteroids though, they could kill you!
+
+Ben: (Responsible for GUI systems and data entry)
+- Saves: Class for individual saves
+- NameEntry: Class for displaying and entering names into the csv file
+- GameEnd: Class for displaying a message at the end of the game
+- PauseScreen: Shows options to mute the game, quit the game, and return to the game
+- SaveSelect: Screen that accesses a CSV file and reads data and can set the current save of the game based on what the user selects.
+- Button: Button Class
+- Unexpected challenges: Getting the csv system to work properly, making sure all the GUIs worked properly.
+
+Anya: (Responsible for Maze levels 1-5)
+- Astronaut (Type of Sprite): Uses left, right, up, and down arrow keys to move.  
+- Alien (Type of Sprite): Moves either up and down or left and right. Heart is lost when Alien runs into Astronaut.
+- Img Array: Displays things in an array. Either hearts, or maze pieces.
+- Items: A type of item that can be picked up. Either pieces or stars.
+- Levels: playable levels 1-5.
+- Maze: Displays the maze image.
+- Sprite: Creates a PImage array for the sprite images.
+- Timer: Runs the sprite animations.
+
+Ryan: (Responsible for last level, saucer art, and its playability)
+- Spaceship: player-controlled spacecraft where up & down is to move and left & right is to turn. THe player can also press spacebar to emit a laser with a cooldown timer.
+- Laser: a projectile that is shot by the spaceship that can destroy or split saucers into smaller saucers. If it hits an edge, it disappears.
+- SaucerA: This is the main saucer class. This small, brown saucer has two hierarchiers of animation: the outer body/spikes and the inner body/lights. The outer body rotates clockwise while the inner body rotates in the opposite direction. All of these rotations happen with respect to the saucer. Also, the lights have flashing animations. When level 6 begins, the saucers spawn on the edge. When it gets hit by a laser, it gets destroyed. Lastly, if the Spaceship gets hit by a saucer, it is an instant game over.
+- SaucerB: This is the subclass of saucerA. This medium-sized, gray saucer has three hierarchiers of animation: the outer body and two inner bodies. The outer body rotates clockwise while the inner bodies rotate in alternating directions.
+- SaucerC: This is the subclass of saucerB. This large, purple saucer has three hierarchiers of animation: the outer body and two inner bodies. The outer body rotates clockwise while the inner bodies rotate in alternating directions. 
+- Saucers: This is a class that encapsulates an ArrayList of the above three types of Saucer objects. This class manages the initial spawn, display, and destruction of the saucer objects. Additionally, when a medium SaucerB or large SaucerC is destroyed by a laser, the Saucers class spawns two smaller SaucerAs or SaucerBs near the destroyed saucer object's location. Lastly, when all saucer objects are destroyed, the game is finished. (You will still get a normal game over screen.)
+- Level 6: This last level encapsulates all of the above objects and restarts each object whenever the player wishes to play again.
+- The player-controlled spaceship and saucer objects can wrap around the window when they cross the edge of the window.
+- Desinged of all of outer and inner body art of the saucers.
+
+Future Steps:
+There are a lot of polish related things that would have been explored if we had more time. For example, screens between levels, and a win screen with a restart option. In addition, some things could be implemented on a gameplay level like indicating when powerups run out. Also, the game save levels aren't very communicative with the maze levels, in that it should save how many pieces have been picked up in previous levels. Lastly, there are some things that could use some refactoring. Some of code is difficult to read and maintain.
+
+Notes:
+We reduced the hitbox of the aliens to make the levels easier to play and thus easier to test. In addition, we reduced the number of saucers for the spaceship to destroy.
